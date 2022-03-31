@@ -1,3 +1,6 @@
+import csv
+import os
+
 from loader import dp
 
 from aiogram import types
@@ -61,10 +64,20 @@ async def send_wrong_answer(message: types.Message, state: FSMContext):
     await message.answer(text)
 
 
-async def send_report(state):
+async def send_report(telegram_id, state):
+    name = UserApi(telegram_id).get_name()
     data = await state.get_data()
-    text = '<b>Отчёт</b>'
+    to_write_in_csv = {'Имя': name}
     for question in messages['questions']:
         current_value = data[question['var']]
-        text += f"\n<b>{question['var']}:</b> {current_value}"
-    print(text)
+        to_write_in_csv[question['var']] = current_value
+    write_in_csv(to_write_in_csv)
+
+
+def write_in_csv(data):
+    with open('output.csv', 'a') as output_file:
+        writer = csv.DictWriter(output_file, fieldnames=data.keys())
+        if os.stat('output.csv').st_size == 0:
+            writer.writeheader()
+        writer.writerow(data)
+        output_file.close()
