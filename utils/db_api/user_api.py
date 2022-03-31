@@ -26,6 +26,10 @@ class UserApi:
             name=self.name
         )
 
+    def get_name(self):
+        user = self.get()
+        return user.name
+
     @staticmethod
     def get_all_users():
         query = User.select()

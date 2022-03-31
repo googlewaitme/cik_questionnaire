@@ -3,7 +3,11 @@ from aiogram.dispatcher.filters.builtin import CommandStart
 
 from loader import dp
 
+from keyboards.default import menu_keyboard
+
 
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
-    await message.answer(f"Привет, {message.from_user.full_name}!")
+    markup = menu_keyboard.get_markup()
+    await message.answer(
+        f"Привет, {message.from_user.full_name}!", reply_markup=markup)

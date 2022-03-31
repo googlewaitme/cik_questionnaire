@@ -1,3 +1,6 @@
+from . import menu
+
+
 from . import form
 
 
