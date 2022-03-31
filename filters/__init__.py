@@ -1,9 +1,6 @@
-from aiogram import Dispatcher
-
 from loader import dp
-# from .is_admin import AdminFilter
+from .is_right_type_answer import IsRightTypeAnswerFilter
 
 
 if __name__ == "filters":
-    # dp.filters_factory.bind(AdminFilter)
-    pass
+    dp.filters_factory.bind(IsRightTypeAnswerFilter)
