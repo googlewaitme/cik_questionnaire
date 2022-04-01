@@ -1,3 +1,5 @@
-Имя,Количество избирателей,Явка,ГВП-голосование,ГМН-голосование
-bulat,10,10,10,10
-bulat,10,10,10,1
+Имя,count_of_voters,total_votes,GVP_voiting,GMN_voiting,confirmation
+bulat,10,10,10,10,Да
+bulat,10,10,10,10,Да
+bulat,10,10,10,10,Да
+bulat,10,10,10,10,Да

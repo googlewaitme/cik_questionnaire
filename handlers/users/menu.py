@@ -9,5 +9,6 @@ from keyboards.default import menu_keyboard
 
 @dp.message_handler(Text("меню"), state='*')
 async def send_menu(message: types.Message, state: FSMContext):
+    await state.finish()
     markup = menu_keyboard.get_markup()
     await message.answer('Меню', reply_markup=markup)
