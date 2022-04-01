@@ -3,6 +3,8 @@ from aiogram.dispatcher import FSMContext
 
 from data.config import messages
 
+import logging
+
 
 class Saver():
     def __init__(
@@ -26,6 +28,11 @@ class Saver():
             await self.save_str()
         elif self.data_type == 'video_note':
             await self.save_video_note()
+        elif self.data_type == 'confirmation':
+            await self.save_confirmation()
+        else:
+            logging.error('Not right data_type')
+
 
     async def save_photo(self):
         file_id = self.message.photo[-1]['file_id']
@@ -43,3 +50,6 @@ class Saver():
     async def save_video_note(self):
         file_id = self.message.video_note['file_id']
         await self.state.update_data({self.variable_name: file_id})
+
+    async def save_confirmation(self):
+        await self.state.update_data({self.variable_name: self.message.text})

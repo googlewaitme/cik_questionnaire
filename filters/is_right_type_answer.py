@@ -27,6 +27,8 @@ class IsRightTypeAnswerFilter(Filter):
             return self.check_video(message, state)
         if need_type == 'choose':
             return self.check_choose(message, state, question)
+        if need_type == 'confirmation':
+            return await self.check_confirmation(message, state, question)
 
     def check_int(self, message: types.Message, state: FSMContext):
         return message.text.isdigit()
@@ -46,3 +48,13 @@ class IsRightTypeAnswerFilter(Filter):
 
     def check_video(self, message: types.Message, state: FSMContext):
         return message.video_note
+
+    async def check_confirmation(
+            self, message: types.Message, state: FSMContext, question: dict):
+        if message.text not in question['answers']:
+            return False
+        if message.text == question['positive_answer']:
+            return True
+        if message.text == question['negative_answer']:
+            await state.update_data(to_end_state=True)
+            return False

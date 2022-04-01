@@ -16,22 +16,30 @@
             {
                 "text": "Количество избирателей в списке",
                 "type_answer": "int",
-                "var": "Количество избирателей"
+                "var": "count_of_voters"
             },
             {
                 "text": "Всего прогосовало(Явка)",
                 "type_answer": "int",
-                "var": "Явка"
+                "var": "total_votes"
             },
             {
                 "text": "ГВП-голосование вне помещения",
                 "type_answer": "int",
-                "var": "ГВП-голосование"
+                "var": "GVP_voiting"
             },
             {
                 "text": "ГМН-голосование по месту нахождения",
                 "type_answer": "int",
-                "var": "ГМН-голосование"
+                "var": "GMN_voiting"
+            },
+            {
+                "text": "Подтвердите, что данные верны\n\n<b>Кол-во избрателей:</b> {count_of_voters}\n<b>Всего прогосовало:</b> {total_votes}\n<b>ГВП-голосование:</b> {GVP_voiting}\n<b>ГМН-голосование:</b> {GMN_voiting}",
+                "type_answer": "confirmation",
+                "var": "confirmation",
+                "answers": ["Да", "Нет"],
+                "positive_answer": "Да",
+                "negative_answer": "Нет"
             }
         ]
     }
