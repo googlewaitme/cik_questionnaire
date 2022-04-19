@@ -4,6 +4,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 
+from data import messages
 from keyboards.default import menu_keyboard
 
 
@@ -11,4 +12,4 @@ from keyboards.default import menu_keyboard
 async def send_menu(message: types.Message, state: FSMContext):
     await state.finish()
     markup = menu_keyboard.get_markup()
-    await message.answer('Меню', reply_markup=markup)
+    await message.answer(messages['menu_message'], reply_markup=markup)

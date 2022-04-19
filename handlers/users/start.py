@@ -10,4 +10,4 @@ from keyboards.default import menu_keyboard
 async def bot_start(message: types.Message):
     markup = menu_keyboard.get_markup()
     await message.answer(
-        f"Привет, {message.from_user.full_name}!", reply_markup=markup)
+        f"Здравствуйте, {message.from_user.full_name}!", reply_markup=markup)
