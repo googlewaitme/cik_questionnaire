@@ -4,7 +4,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 
-from data import messages
+from data.config import messages
 from keyboards.default import menu_keyboard
 
 
